@@ -1,0 +1,6 @@
+# Used by tests marked with @ActiveProfiles("test").
+# Only the values written here override application.yml; everything else stays the same.
+# Tests get their own database so they can never touch your development data.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/splitapp_test

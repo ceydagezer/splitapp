@@ -5,5 +5,21 @@ spring:
   application:
     name: splitapp-backend
 
+  # Where the database is. Spring Boot uses these to create a HikariCP connection pool,
+  # which keeps a few connections open so each request doesn't have to connect from scratch.
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/splitapp}
+    username: ${DATABASE_USER:splitapp}
+    password: ${DATABASE_PASSWORD:splitapp_dev_password}
+
+  jpa:
+    hibernate:
+      # Flyway owns the schema (src/main/resources/db/migration). Hibernate must never change
+      # tables itself; `validate` only checks that our @Entity classes match the real tables
+      # and stops the app at startup if they don't.
+      ddl-auto: validate
+    # Close the database connection when the service is done, not when the HTTP response is sent.
+    open-in-view: false
+
 server:
   port: ${PORT:8080}
