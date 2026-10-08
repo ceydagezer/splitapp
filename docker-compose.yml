@@ -1,0 +1,18 @@
+# Runs PostgreSQL in a container so you don't need to install it on Windows.
+# Start:  docker compose up -d
+# Stop:   docker compose down        (your data is kept in the "pgdata" volume)
+# Wipe:   docker compose down -v     (deletes ALL data - useful when experimenting)
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: splitapp
+      POSTGRES_USER: splitapp
+      POSTGRES_PASSWORD: splitapp_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
