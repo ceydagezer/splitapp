@@ -1,0 +1,9 @@
+# Spring Boot reads its settings from this file.
+# `${PORT:8080}` means: "use the PORT environment variable if it exists, otherwise 8080".
+# This lets the same code run on your PC and on a real server.
+spring:
+  application:
+    name: splitapp-backend
+
+server:
+  port: ${PORT:8080}
