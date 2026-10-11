@@ -10,6 +10,5 @@
     </root>
 
     <!-- These libraries are very chatty, so only show their warnings -->
-    <logger name="io.netty" level="WARN"/>
     <logger name="com.zaxxer.hikari" level="WARN"/>
 </configuration>
